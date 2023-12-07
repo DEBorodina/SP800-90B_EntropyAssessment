@@ -1,4 +1,5 @@
 import sys
+import os
 from matplotlib import pyplot as plt
 from termcolor import colored
 from TheMostCommonValueEstimate import TheMostCommonValueEstimate
@@ -14,6 +15,12 @@ if __name__ == '__main__':
         dataFile = args[1]
     except:
         print(colored('No data file was provided', 'red'))
+        sys.exit(0)
+
+    checkFile = os.path.isfile(dataFile)
+
+    if not checkFile:
+        print(colored('Invalid data file was provided', 'red'))
         sys.exit(0)
 
     try:
